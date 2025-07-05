@@ -1,0 +1,186 @@
+# Cursor Rules for MCP Context Storage Project
+
+## Project Overview
+This is an MCP (Model Context Protocol) server implementation for persistent context storage using PostgreSQL. The project provides AI conversation and project context persistence capabilities.
+
+## Code Style & Standards
+
+### JavaScript/Node.js
+- Use ES6+ modules with import/export syntax
+- Use async/await for asynchronous operations
+- Follow JSDoc comments for all functions and classes
+- Use camelCase for variables and functions
+- Use PascalCase for classes
+- Use UPPER_SNAKE_CASE for constants
+- Prefer const over let, avoid var
+- Use template literals for string interpolation
+
+### Database
+- Use parameterized queries to prevent SQL injection
+- Follow PostgreSQL naming conventions (snake_case for tables/columns)
+- Always handle database connection errors gracefully
+- Use transactions for multi-step operations
+
+## Architecture Guidelines
+
+### MCP Server Structure
+- Keep the main server logic in `src/index.js`
+- Separate database operations in `src/database.js`
+- Use the MCP SDK properly for protocol compliance
+- Handle all tool requests with proper error handling
+- Return structured responses with appropriate content types
+
+### Error Handling
+- Always wrap database operations in try-catch blocks
+- Return meaningful error messages to the client
+- Log errors appropriately for debugging
+- Use the `isError: true` flag in MCP responses for errors
+
+### Environment Configuration
+- Store sensitive data in environment variables
+- Use dotenv for local development
+- Provide default values where appropriate
+- Document all required environment variables
+
+## File Organization
+
+```
+mcp-server/
+├── src/
+│   ├── index.js          # Main MCP server implementation
+│   ├── database.js       # Database operations and connection management
+│   └── config/
+│       └── database.json # Database configuration
+├── package.json          # Node.js dependencies and scripts
+└── .env                  # Environment variables (not in git)
+```
+
+## Development Best Practices
+
+### Database Operations
+- Always test database connectivity on server startup
+- Use connection pooling for better performance
+- Close database connections gracefully on shutdown
+- Implement proper migration strategies for schema changes
+
+### MCP Protocol
+- Implement all required MCP handlers (ListTools, CallTool)
+- Use proper input schema validation
+- Return structured responses with content arrays
+- Handle tool auto-approval configurations
+
+### Testing
+- Test database operations independently
+- Test MCP tool calls with sample data
+- Verify error handling scenarios
+- Test graceful shutdown procedures
+
+## Common Patterns
+
+### Tool Handler Template
+```javascript
+async handleToolName(args) {
+    try {
+        const { param1, param2 } = args;
+        const result = await this.db.operationName(param1, param2);
+        
+        return {
+            content: [
+                {
+                    type: 'text',
+                    text: `Success message: ${result}`
+                }
+            ]
+        };
+    } catch (error) {
+        return {
+            content: [
+                {
+                    type: 'text',
+                    text: `Error: ${error.message}`
+                }
+            ],
+            isError: true
+        };
+    }
+}
+```
+
+### Database Query Pattern
+```javascript
+async queryMethod(param1, param2) {
+    const client = await this.pool.connect();
+    try {
+        const query = 'SELECT * FROM table WHERE col1 = $1 AND col2 = $2';
+        const result = await client.query(query, [param1, param2]);
+        return result.rows;
+    } finally {
+        client.release();
+    }
+}
+```
+
+## Docker & Deployment
+
+### Docker Compose
+- Use environment-specific configurations
+- Ensure proper health checks for PostgreSQL
+- Mount volumes for data persistence
+- Use appropriate network configurations
+
+### Scripts
+- Provide setup, start, stop, and test scripts
+- Include database initialization scripts
+- Implement health check and monitoring scripts
+- Create backup and restore procedures
+
+## Security Considerations
+
+- Never commit database credentials to version control
+- Use strong passwords for database users
+- Limit database user permissions to minimum required
+- Validate all input parameters
+- Sanitize data before database operations
+- Use HTTPS for external MCP connections
+
+## Performance Guidelines
+
+- Use database indexes appropriately
+- Implement pagination for large result sets
+- Use connection pooling
+- Monitor memory usage and clean up resources
+- Consider caching for frequently accessed data
+
+## Configuration Management
+
+### Environment Variables
+```
+DB_HOST=localhost
+DB_PORT=5433
+DB_NAME=mcp_context
+DB_USER=mcp_user
+DB_PASSWORD=mcp_secure_password
+```
+
+### MCP Server Configuration
+- Configure auto-approval for safe operations
+- Set appropriate timeouts
+- Handle connection retries
+- Implement graceful degradation
+
+## When suggesting code changes:
+1. Always maintain MCP protocol compliance
+2. Preserve existing functionality unless explicitly changing it
+3. Add proper error handling and logging
+4. Update documentation and comments
+5. Consider backward compatibility
+6. Test database operations thoroughly
+7. Follow the established patterns in the codebase
+
+## Priority Areas for Development:
+1. Database schema optimization
+2. Error handling improvements
+3. Performance monitoring
+4. Additional context storage features
+5. Integration testing
+6. Documentation updates
