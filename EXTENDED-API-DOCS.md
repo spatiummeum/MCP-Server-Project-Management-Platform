@@ -2,63 +2,63 @@
 
 ## Overview
 
-El servidor MCP Context Server ha sido extendido con múltiples funcionalidades para proporcionar un sistema completo de gestión de contexto de proyectos. Además del almacenamiento básico de contexto y conversaciones, ahora incluye:
+The MCP Context Server has been extended with multiple functionalities to provide a complete project context management system. In addition to basic context and conversation storage, it now includes:
 
-## 🆕 Nuevas Funcionalidades
+## 🆕 New Features
 
-### 1. **Historial de Archivos y Versiones** 📝
-Almacena y rastrea cambios en archivos del proyecto con control de versiones completo.
+### 1. **File History and Versioning** 📝
+Stores and tracks changes in project files with complete version control.
 
-**Herramientas disponibles:**
-- `store_file_history` - Almacenar versión de archivo con cambios
-- `get_file_history` - Obtener historial de versiones de archivos
+**Available Tools:**
+- `store_file_history` - Store file version with changes
+- `get_file_history` - Get file version history
 
-**Casos de uso:**
-- Seguimiento de cambios en código fuente
-- Auditoría de modificaciones
-- Recuperación de versiones anteriores
-- Análisis de evolución del código
+**Use Cases:**
+- Source code change tracking
+- Modification auditing
+- Recovery of previous versions
+- Code evolution analysis
 
-### 2. **Gestión de Usuarios y Roles** 👥
-Administra usuarios del proyecto con roles y permisos específicos.
+### 2. **User and Role Management** 👥
+Manages project users with specific roles and permissions.
 
-**Herramientas disponibles:**
-- `store_project_user` - Agregar/actualizar usuario del proyecto
-- `get_project_users` - Obtener usuarios y sus roles
+**Available Tools:**
+- `store_project_user` - Add/update project user
+- `get_project_users` - Get users and their roles
 
-**Roles disponibles:**
-- `admin` - Administrador completo
-- `developer` - Desarrollador con permisos de escritura
-- `viewer` - Solo lectura
-- `tester` - Enfocado en pruebas
+**Available Roles:**
+- `admin` - Full administrator
+- `developer` - Developer with write permissions
+- `viewer` - Read-only access
+- `tester` - Testing-focused
 
-### 3. **Gestión de Tareas e Issues** 📋
-Sistema completo de tickets, tareas y seguimiento de issues.
+### 3. **Task and Issue Management** 📋
+Complete ticket, task, and issue tracking system.
 
-**Herramientas disponibles:**
-- `store_project_task` - Crear/actualizar tareas
-- `get_project_tasks` - Obtener tareas con filtros
+**Available Tools:**
+- `store_project_task` - Create/update tasks
+- `get_project_tasks` - Get tasks with filters
 
-**Tipos de tareas:**
-- `feature` - Nueva funcionalidad
-- `bug` - Error o fallo
-- `enhancement` - Mejora
-- `documentation` - Documentación
+**Task Types:**
+- `feature` - New functionality
+- `bug` - Error or failure
+- `enhancement` - Improvement
+- `documentation` - Documentation
 
-**Estados:**
-- `open` - Abierto
-- `in_progress` - En progreso
-- `testing` - En pruebas
-- `closed` - Cerrado
+**States:**
+- `open` - Open
+- `in_progress` - In progress
+- `testing` - Testing
+- `closed` - Closed
 
-### 4. **Gestión de Dependencias** 📦
-Rastrea todas las dependencias y paquetes del proyecto.
+### 4. **Dependency Management** 📦
+Tracks all project dependencies and packages.
 
-**Herramientas disponibles:**
-- `store_project_dependency` - Almacenar dependencia
-- `get_project_dependencies` - Obtener dependencias
+**Available Tools:**
+- `store_project_dependency` - Store dependency
+- `get_project_dependencies` - Get dependencies
 
-**Package Managers soportados:**
+**Supported Package Managers:**
 - `npm` - Node.js
 - `pip` - Python
 - `maven` - Java
@@ -66,131 +66,131 @@ Rastrea todas las dependencias y paquetes del proyecto.
 - `composer` - PHP
 - `cargo` - Rust
 
-### 5. **Configuraciones de Entorno** 🌍
-Gestiona variables de entorno y configuraciones por ambiente.
+### 5. **Environment Configuration** 🌍
+Manages environment variables and configurations per environment.
 
-**Herramientas disponibles:**
-- `store_environment_config` - Almacenar configuración
-- `get_environment_configs` - Obtener configuraciones
+**Available Tools:**
+- `store_environment_config` - Store configuration
+- `get_environment_configs` - Get configurations
 
-**Entornos típicos:**
-- `development` - Desarrollo
-- `staging` - Staging/Pruebas
-- `production` - Producción
-- `testing` - Entorno de tests
+**Typical Environments:**
+- `development` - Development
+- `staging` - Staging/Testing
+- `production` - Production
+- `testing` - Test environment
 
-### 6. **Logs de Actividad y Auditoría** 📊
-Registro completo de actividades del proyecto para auditoría.
+### 6. **Activity Logs and Auditing** 📊
+Complete project activity logging for auditing purposes.
 
-**Herramientas disponibles:**
-- `log_activity` - Registrar actividad
-- `get_activity_logs` - Obtener logs de actividad
+**Available Tools:**
+- `log_activity` - Log activity
+- `get_activity_logs` - Get activity logs
 
-**Tipos de actividad:**
-- `file_changed` - Archivo modificado
-- `task_created` - Tarea creada
-- `user_login` - Usuario logueado
-- `build_started` - Build iniciado
-- `deployment` - Despliegue
+**Activity Types:**
+- `file_changed` - File modified
+- `task_created` - Task created
+- `user_login` - User logged in
+- `build_started` - Build started
+- `deployment` - Deployment
 
-### 7. **Gestión de Builds y Pruebas** 🔨
-Rastrea builds, resultados de tests y despliegues.
+### 7. **Build and Test Management** 🔨
+Tracks builds, test results, and deployments.
 
-**Herramientas disponibles:**
-- `store_build` - Almacenar información de build
-- `update_build_status` - Actualizar estado de build
-- `get_build_history` - Obtener historial de builds
+**Available Tools:**
+- `store_build` - Store build information
+- `update_build_status` - Update build status
+- `get_build_history` - Get build history
 
-**Tipos de build:**
-- `ci` - Integración continua
-- `manual` - Build manual
-- `release` - Build de release
+**Build Types:**
+- `ci` - Continuous integration
+- `manual` - Manual build
+- `release` - Release build
 
-**Estados:**
-- `success` - Exitoso
-- `failure` - Fallido
-- `in_progress` - En progreso
-- `cancelled` - Cancelado
+**States:**
+- `success` - Successful
+- `failure` - Failed
+- `in_progress` - In progress
+- `cancelled` - Cancelled
 
-### 8. **Documentación y Recursos** 📚
-Gestiona documentación del proyecto organizada por tipos.
+### 8. **Documentation and Resources** 📚
+Manages project documentation organized by types.
 
-**Herramientas disponibles:**
-- `store_documentation` - Almacenar documentación
-- `get_documentation` - Obtener documentación
+**Available Tools:**
+- `store_documentation` - Store documentation
+- `get_documentation` - Get documentation
 
-**Tipos de documentación:**
-- `api` - Documentación de API
-- `user_guide` - Guía de usuario
-- `technical` - Documentación técnica
-- `changelog` - Registro de cambios
+**Documentation Types:**
+- `api` - API documentation
+- `user_guide` - User guide
+- `technical` - Technical documentation
+- `changelog` - Change log
 
-### 9. **Relaciones entre Componentes** 🔗
-Mapea relaciones y dependencias entre módulos del proyecto.
+### 9. **Component Relationships** 🔗
+Maps relationships and dependencies between project modules.
 
-**Herramientas disponibles:**
-- `store_project_component` - Almacenar componente
-- `store_component_relationship` - Almacenar relación
-- `get_project_components` - Obtener componentes
-- `get_component_relationships` - Obtener relaciones
+**Available Tools:**
+- `store_project_component` - Store component
+- `store_component_relationship` - Store relationship
+- `get_project_components` - Get components
+- `get_component_relationships` - Get relationships
 
-**Tipos de componentes:**
-- `module` - Módulo
-- `service` - Servicio
-- `library` - Librería
-- `class` - Clase
-- `function` - Función
+**Component Types:**
+- `module` - Module
+- `service` - Service
+- `library` - Library
+- `class` - Class
+- `function` - Function
 
-**Tipos de relaciones:**
-- `depends_on` - Depende de
-- `implements` - Implementa
-- `extends` - Extiende
-- `calls` - Llama a
+**Relationship Types:**
+- `depends_on` - Depends on
+- `implements` - Implements
+- `extends` - Extends
+- `calls` - Calls
 
-### 10. **Metadatos de Archivos** 🗂️
-Información detallada sobre archivos del proyecto.
+### 10. **File Metadata** 🗂️
+Detailed information about project files.
 
-**Herramientas disponibles:**
-- `store_file_metadata` - Almacenar metadatos
-- `get_file_metadata` - Obtener metadatos
+**Available Tools:**
+- `store_file_metadata` - Store metadata
+- `get_file_metadata` - Get metadata
 
-**Información incluida:**
-- Tamaño de archivo
-- Tipo y extensión
-- Lenguaje de programación
-- Número de líneas
-- Checksum para integridad
-- Autor de última modificación
+**Included Information:**
+- File size
+- Type and extension
+- Programming language
+- Line count
+- Checksum for integrity
+- Last modification author
 
-## 📊 Base de Datos
+## 📊 Database
 
-### Nuevas Tablas Creadas
+### New Tables Created
 
-1. **file_history** - Historial de versiones de archivos
-2. **project_users** - Usuarios y roles del proyecto
-3. **project_tasks** - Tareas e issues
-4. **project_dependencies** - Dependencias y paquetes
-5. **project_environments** - Configuraciones de entorno
-6. **project_activity_logs** - Logs de actividad
-7. **project_builds** - Información de builds
-8. **project_documentation** - Documentación
-9. **project_components** - Componentes del proyecto
-10. **component_relationships** - Relaciones entre componentes
-11. **file_metadata** - Metadatos de archivos
+1. **file_history** - File version history
+2. **project_users** - Project users and roles
+3. **project_tasks** - Tasks and issues
+4. **project_dependencies** - Dependencies and packages
+5. **project_environments** - Environment configurations
+6. **project_activity_logs** - Activity logs
+7. **project_builds** - Build information
+8. **project_documentation** - Documentation
+9. **project_components** - Project components
+10. **component_relationships** - Component relationships
+11. **file_metadata** - File metadata
 
-### Índices Optimizados
+### Optimized Indexes
 
-Cada tabla incluye índices optimizados para consultas frecuentes:
-- Búsquedas por proyecto
-- Filtros por tipo/estado
-- Ordenamiento por fecha
-- Relaciones entre entidades
+Each table includes optimized indexes for frequent queries:
+- Project searches
+- Type/status filters
+- Date sorting
+- Entity relationships
 
-## 🚀 Casos de Uso Avanzados
+## 🚀 Advanced Use Cases
 
-### Análisis de Proyecto Completo
+### Complete Project Analysis
 ```javascript
-// Obtener toda la información de un proyecto
+// Get all information for a project
 const projectData = {
   context: await getContext(projectName),
   users: await getProjectUsers(projectName),
@@ -202,27 +202,27 @@ const projectData = {
 };
 ```
 
-### Auditoría de Seguridad
+### Security Auditing
 ```javascript
-// Rastrear todas las actividades sensibles
+// Track all sensitive activities
 await logActivity(projectName, 'security_access', user, 'sensitive_file', 'accessed');
 const securityLogs = await getActivityLogs(projectName, 'security_access');
 ```
 
-### Gestión de Releases
+### Release Management
 ```javascript
-// Preparar información de release
+// Prepare release information
 const releaseInfo = {
   build: await storeBuild(projectName, 'v1.2.0', 'release', 'success'),
   dependencies: await getProjectDependencies(projectName),
   tests: await getBuildHistory(projectName, 'success'),
-  docs: await getDocumentation(projectName, null, true) // Solo publicados
+  docs: await getDocumentation(projectName, null, true) // Only published
 };
 ```
 
-### Análisis de Dependencias
+### Dependency Analysis
 ```javascript
-// Análisis completo de dependencias
+// Complete dependency analysis
 const analysis = {
   npmPackages: await getProjectDependencies(projectName, 'npm'),
   components: await getProjectComponents(projectName),
@@ -230,72 +230,72 @@ const analysis = {
 };
 ```
 
-## 🔧 Configuración
+## 🔧 Configuration
 
-### Variables de Entorno Requeridas
+### Required Environment Variables
 ```bash
 DB_HOST=localhost
-DB_PORT=5432
+DB_PORT=5433
 DB_NAME=mcp_context
 DB_USER=mcp_user
 DB_PASSWORD=mcp_secure_password
 ```
 
-### Esquema de Base de Datos
-El esquema se inicializa automáticamente con Docker Compose. Todas las tablas incluyen:
-- Timestamps automáticos (created_at, updated_at)
-- Campos de metadata JSONB para extensibilidad
-- Índices optimizados para rendimiento
-- Triggers para actualización automática de timestamps
+### Database Schema
+The schema is initialized automatically with Docker Compose. All tables include:
+- Automatic timestamps (created_at, updated_at)
+- JSONB metadata fields for extensibility
+- Optimized indexes for performance
+- Triggers for automatic timestamp updates
 
-## 📈 Rendimiento
+## 📈 Performance
 
-### Optimizaciones Implementadas
-- **Connection Pooling**: Pool de conexiones PostgreSQL configurado
-- **Índices Estratégicos**: Índices en campos de búsqueda frecuente
-- **Campos JSONB**: Para metadata flexible y consultas eficientes
-- **Paginación**: Límites por defecto en consultas grandes
-- **Checksums**: Verificación de integridad en archivos
+### Implemented Optimizations
+- **Connection Pooling**: Configured PostgreSQL connection pool
+- **Strategic Indexes**: Indexes on frequently searched fields
+- **JSONB Fields**: For flexible metadata and efficient queries
+- **Pagination**: Default limits on large queries
+- **Checksums**: File integrity verification
 
-### Métricas Recomendadas
-- Monitorear uso del pool de conexiones
-- Rastrear tiempo de respuesta de queries
-- Alertas en fallos de integridad de datos
-- Uso de almacenamiento por proyecto
+### Recommended Metrics
+- Monitor connection pool usage
+- Track query response times
+- Alerts on data integrity failures
+- Storage usage per project
 
-## 🛡️ Seguridad
+## 🛡️ Security
 
-### Características de Seguridad
-- **Configuraciones Sensibles**: Marcado de campos sensibles
-- **Auditoría Completa**: Log de todas las actividades
-- **Control de Acceso**: Roles y permisos por usuario
-- **Integridad de Datos**: Checksums y validaciones
-- **IP Tracking**: Registro de direcciones IP en actividades
+### Security Features
+- **Sensitive Configurations**: Marking of sensitive fields
+- **Complete Auditing**: Log of all activities
+- **Access Control**: Roles and permissions per user
+- **Data Integrity**: Checksums and validations
+- **IP Tracking**: IP address logging in activities
 
-### Mejores Prácticas
-1. Marcar configuraciones sensibles como `isSensitive: true`
-2. Registrar todas las actividades críticas
-3. Verificar checksums en archivos importantes
-4. Revisar logs de actividad regularmente
-5. Configurar alertas para actividades sospechosas
+### Best Practices
+1. Mark sensitive configurations as `isSensitive: true`
+2. Log all critical activities
+3. Verify checksums on important files
+4. Review activity logs regularly
+5. Configure alerts for suspicious activities
 
 ## 🧪 Testing
 
-Ejecutar el script de pruebas completo:
+Run the complete test script:
 ```bash
 node scripts/test-extended-apis.js
 ```
 
-Este script prueba todas las funcionalidades nuevas y genera un reporte completo.
+This script tests all new functionalities and generates a complete report.
 
-## 📞 Soporte
+## 📞 Support
 
-Para cualquier pregunta sobre las nuevas funcionalidades:
-1. Revisar esta documentación
-2. Ejecutar los tests para verificar funcionamiento
-3. Consultar los logs del servidor para debugging
-4. Verificar la configuración de base de datos
+For any questions about the new functionalities:
+1. Review this documentation
+2. Run tests to verify functionality
+3. Check server logs for debugging
+4. Verify database configuration
 
 ---
 
-*Esta extensión convierte el MCP Context Server en una solución completa de gestión de contexto de proyectos, proporcionando todas las herramientas necesarias para el seguimiento, análisis y administración de proyectos de desarrollo de software.*
+*This extension transforms the MCP Context Server into a complete project context management solution, providing all necessary tools for tracking, analysis, and administration of software development projects.*
